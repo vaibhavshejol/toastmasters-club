@@ -1,0 +1,65 @@
+package com.toastmasters.example.mapper;
+
+import com.toastmasters.example.entity.Meeting;
+import com.toastmasters.example.request.MeetingRequest;
+import com.toastmasters.example.response.MeetingResponse;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-08-28T10:33:39+0530",
+    comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.3 (Microsoft)"
+)
+public class MeetingMapperImpl implements MeetingMapper {
+
+    @Override
+    public Meeting meetingRequestToMeetingEntity(MeetingRequest meetingRequest) {
+        if ( meetingRequest == null ) {
+            return null;
+        }
+
+        Meeting meeting = new Meeting();
+
+        meeting.setMeetingTitle( meetingRequest.getMeetingTitle() );
+        meeting.setMeetingDescription( meetingRequest.getMeetingDescription() );
+        meeting.setMeetingDate( meetingRequest.getMeetingDate() );
+        meeting.setMeetingStartTime( meetingRequest.getMeetingStartTime() );
+        meeting.setMeetingEndTime( meetingRequest.getMeetingEndTime() );
+
+        return meeting;
+    }
+
+    @Override
+    public MeetingResponse meetingEntityToMeetingResponse(Meeting meeting) {
+        if ( meeting == null ) {
+            return null;
+        }
+
+        MeetingResponse meetingResponse = new MeetingResponse();
+
+        meetingResponse.setMeetingId( meeting.getMeetingId() );
+        meetingResponse.setMeetingTitle( meeting.getMeetingTitle() );
+        meetingResponse.setMeetingDescription( meeting.getMeetingDescription() );
+        meetingResponse.setMeetingDate( meeting.getMeetingDate() );
+        meetingResponse.setMeetingStartTime( meeting.getMeetingStartTime() );
+        meetingResponse.setMeetingEndTime( meeting.getMeetingEndTime() );
+
+        return meetingResponse;
+    }
+
+    @Override
+    public List<MeetingResponse> meetingEntityListToMeetingResponseList(List<Meeting> meetings) {
+        if ( meetings == null ) {
+            return null;
+        }
+
+        List<MeetingResponse> list = new ArrayList<MeetingResponse>( meetings.size() );
+        for ( Meeting meeting : meetings ) {
+            list.add( meetingEntityToMeetingResponse( meeting ) );
+        }
+
+        return list;
+    }
+}
