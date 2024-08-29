@@ -2,6 +2,7 @@ package com.toastmasters.example.mapper;
 
 import com.toastmasters.example.entity.Meeting;
 import com.toastmasters.example.request.MeetingRequest;
+import com.toastmasters.example.request.ScheduleMeetingRequest;
 import com.toastmasters.example.response.MeetingResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -18,4 +19,6 @@ public interface MeetingMapper {
     MeetingResponse meetingEntityToMeetingResponse(Meeting meeting);
 
     List<MeetingResponse> meetingEntityListToMeetingResponseList(List<Meeting> meetings);
+
+    MeetingRequest scheduleMeetingRequestToMeetingEntity(ScheduleMeetingRequest scheduleMeetingRequest);
 }

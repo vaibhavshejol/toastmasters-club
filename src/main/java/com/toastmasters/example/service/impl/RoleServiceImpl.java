@@ -1,5 +1,6 @@
 package com.toastmasters.example.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,5 +44,16 @@ public class RoleServiceImpl implements RoleService {
 
     public void deleteRole(Long id) {
         roleRepository.deleteById(id);
+    }
+
+    @Override
+    public void createAllRoles(List<String> roleNames) {
+        List<Role> roles = new ArrayList<>();
+        for (String roleName : roleNames) {
+            Role role = new Role();
+            role.setRoleName(roleName);
+            roles.add(role);
+        }
+        List<Role> savedRoles = roleRepository.saveAll(roles);
     }
 }

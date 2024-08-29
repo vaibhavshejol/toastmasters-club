@@ -18,5 +18,6 @@ public interface RoleService {
     RoleResponse updateRole(Long id, RoleRequest role);
 
     void deleteRole(Long id);
-    
+
+    void createAllRoles(List<String> roles);
 }

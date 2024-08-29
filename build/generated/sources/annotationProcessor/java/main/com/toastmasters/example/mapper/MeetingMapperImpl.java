@@ -2,6 +2,7 @@ package com.toastmasters.example.mapper;
 
 import com.toastmasters.example.entity.Meeting;
 import com.toastmasters.example.request.MeetingRequest;
+import com.toastmasters.example.request.ScheduleMeetingRequest;
 import com.toastmasters.example.response.MeetingResponse;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-28T10:33:39+0530",
+    date = "2024-08-29T11:39:19+0530",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.3 (Microsoft)"
 )
 public class MeetingMapperImpl implements MeetingMapper {
@@ -61,5 +62,16 @@ public class MeetingMapperImpl implements MeetingMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public MeetingRequest scheduleMeetingRequestToMeetingEntity(ScheduleMeetingRequest scheduleMeetingRequest) {
+        if ( scheduleMeetingRequest == null ) {
+            return null;
+        }
+
+        MeetingRequest meetingRequest = new MeetingRequest();
+
+        return meetingRequest;
     }
 }

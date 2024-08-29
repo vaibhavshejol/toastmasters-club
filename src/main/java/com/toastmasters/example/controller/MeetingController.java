@@ -1,15 +1,14 @@
 package com.toastmasters.example.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.toastmasters.example.request.MeetingRequest;
+import com.toastmasters.example.request.ScheduleMeetingRequest;
 import com.toastmasters.example.response.MeetingResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.toastmasters.example.entity.Meeting;
 import com.toastmasters.example.service.MeetingService;
 
 @RestController
@@ -24,6 +23,12 @@ public class MeetingController {
     public ResponseEntity<MeetingResponse> createMeeting(@RequestBody MeetingRequest meeting) {
         MeetingResponse createdMeeting = meetingService.createMeeting(meeting);
         return ResponseEntity.ok(createdMeeting);
+    }
+
+    @PostMapping("/schedule-meeting")
+    public ResponseEntity<String> scheduleMeeting(@RequestBody ScheduleMeetingRequest scheduleMeetingRequest){
+        meetingService.shceduleMeeting(scheduleMeetingRequest);
+        return ResponseEntity.ok("Meeting scheduled successfully...");
     }
 
     @GetMapping
